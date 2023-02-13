@@ -2,30 +2,26 @@ package auth
 
 import (
 	"net/http"
+	"player-manager/internal/server/errors"
+	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/pkg/errors"
 )
 
-const validToken = "Bearer token"
-
-type Headers struct {
-	Token string `header:"Authorization"`
-}
+const (
+	validUsername = "username"
+	validPassword = "password"
+)
 
 func SimpleAuthorizationMiddleware(c *gin.Context) {
-	var (
-		h   Headers
-		err error
-	)
-
-	if err = c.ShouldBindHeader(&h); err != nil {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": errors.Wrapf(err, "failed to bind header").Error()})
+	u, p, ok := c.Request.BasicAuth()
+	if !ok || len(strings.TrimSpace(u)) < 1 || len(strings.TrimSpace(p)) < 1 {
+		c.AbortWithStatusJSON(http.StatusUnauthorized, errors.NewError(http.StatusUnauthorized, "empty credentials", nil))
 		return
 	}
 
-	if h.Token != validToken {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": errors.New("invalid token").Error()})
+	if u != validUsername || p != validPassword {
+		c.AbortWithStatusJSON(http.StatusUnauthorized, errors.NewError(http.StatusUnauthorized, "invalid credentials", nil))
 		return
 	}
 }
