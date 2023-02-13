@@ -38,7 +38,7 @@ and if you want to stop the containers then execute
 
 The application doesn't allow to create a user, but there's one already created `krzysztofszulcjr`.
 
-The server will be accessible on localhost at 8080 port. Check out [the swagger](http://localhost:8080/api/v1/swagger) to learn more about the API. 
+The server will be accessible on localhost at 8080 port. Check out [the swagger](http://localhost:8080/api/v1/swagger) to learn more about the API. Some endpoints require basic authentication, so use `username` and `password` as credentials to authenticate.
 
 ### Examples 
 
