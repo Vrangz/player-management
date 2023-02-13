@@ -8,11 +8,8 @@
 // Produces:
 //   - application/json
 //
-// Security:
-//   - token:
-//
 // SecurityDefinitions:
-//  token:
+//  basic:
 //    type: basic
 //
 // swagger:meta
