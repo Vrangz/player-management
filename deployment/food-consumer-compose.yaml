@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  food-consumer:
+    image: food-consumer
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+    links:
+      - db

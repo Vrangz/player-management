@@ -1,0 +1,242 @@
+basePath: /api/v1
+definitions:
+    CommonError:
+        properties:
+            error:
+                description: |-
+                    Reason of the error
+                    in: string
+                type: string
+                x-go-name: Error
+            message:
+                description: |-
+                    Message of the error
+                    in: string
+                type: string
+                x-go-name: Message
+            status:
+                description: |-
+                    Status of the error
+                    in: int
+                format: int64
+                type: integer
+                x-go-name: Status
+        type: object
+        x-go-package: player-manager/internal/server/errors
+    Item:
+        properties:
+            name:
+                type: string
+                x-go-name: Name
+            quantity:
+                format: int64
+                type: integer
+                x-go-name: Quantity
+        type: object
+        x-go-package: player-manager/internal/server/player
+    Log:
+        properties:
+            created_at:
+                format: date-time
+                type: string
+                x-go-name: CreatedAt
+            msg:
+                type: string
+                x-go-name: Msg
+        type: object
+        x-go-package: player-manager/internal/server/log
+    LogsResponse:
+        properties:
+            items:
+                description: |-
+                    logs
+                    in: body
+                items:
+                    $ref: '#/definitions/Log'
+                type: array
+                x-go-name: Logs
+        type: object
+        x-go-package: player-manager/internal/server/log
+    PlayerItemsResponse:
+        properties:
+            items:
+                description: |-
+                    items
+                    in: body
+                items:
+                    $ref: '#/definitions/Item'
+                type: array
+                x-go-name: Items
+        type: object
+        x-go-package: player-manager/internal/server/player
+    PlayerResponse:
+        properties:
+            username:
+                description: |-
+                    username
+                    in: body
+                type: string
+                x-go-name: Username
+        type: object
+        x-go-package: player-manager/internal/server/player
+host: localhost:8080
+info:
+    title: 'Player manager Api:'
+    version: 1.0.0
+paths:
+    /logs:
+        get:
+            operationId: logs
+            responses:
+                "200":
+                    description: LogsResponse
+                    schema:
+                        $ref: '#/definitions/LogsResponse'
+                "400":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
+            summary: Gets logs.
+            tags:
+                - logs
+    /players/{username}:
+        get:
+            operationId: playerInfo
+            parameters:
+                - description: The username of the player
+                  in: path
+                  name: username
+                  required: true
+                  type: string
+                  x-go-name: Username
+            responses:
+                "200":
+                    description: PlayerResponse
+                    schema:
+                        $ref: '#/definitions/PlayerResponse'
+                "400":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
+            summary: Gets player information.
+            tags:
+                - player
+    /players/{username}/action/build:
+        post:
+            operationId: build
+            parameters:
+                - description: The username of the player
+                  in: path
+                  name: username
+                  required: true
+                  type: string
+                  x-go-name: Username
+            responses:
+                "204":
+                    $ref: '#/responses/NoContentResponse'
+                "400":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
+            summary: If the player has enough of resources, he can perform build action.
+            tags:
+                - player
+    /players/{username}/items:
+        get:
+            operationId: playerItems
+            parameters:
+                - description: The username of the player
+                  in: path
+                  name: username
+                  required: true
+                  type: string
+                  x-go-name: Username
+            responses:
+                "200":
+                    description: PlayerItemsResponse
+                    schema:
+                        $ref: '#/definitions/PlayerItemsResponse'
+                "400":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
+            summary: List all items of a player.
+            tags:
+                - player
+    /players/{username}/items/{item}:
+        delete:
+            operationId: playerDeleteItem
+            parameters:
+                - description: The username of the player
+                  in: path
+                  name: username
+                  required: true
+                  type: string
+                  x-go-name: Username
+                - description: Item name
+                  enum:
+                    - wood
+                    - stone
+                    - food
+                  in: path
+                  name: item
+                  required: true
+                  type: string
+                  x-go-name: Item
+                - description: Item quantity
+                  in: query
+                  name: quantity
+                  type: string
+                  x-go-name: Quantity
+            responses:
+                "204":
+                    $ref: '#/responses/NoContentResponse'
+                "400":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
+            summary: Deletes defined item from the player.
+            tags:
+                - player
+        put:
+            operationId: playerAddItem
+            parameters:
+                - description: The username of the player
+                  in: path
+                  name: username
+                  required: true
+                  type: string
+                  x-go-name: Username
+                - description: Item name
+                  enum:
+                    - wood
+                    - stone
+                    - food
+                  in: path
+                  name: item
+                  required: true
+                  type: string
+                  x-go-name: Item
+                - description: Item quantity
+                  in: query
+                  name: quantity
+                  type: string
+                  x-go-name: Quantity
+            responses:
+                "204":
+                    $ref: '#/responses/NoContentResponse'
+                "400":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
+            summary: Adds defined item to the player.
+            tags:
+                - player
+produces:
+    - application/json
+responses:
+    NoContentResponse:
+        description: ""
+schemes:
+    - http
+swagger: "2.0"
