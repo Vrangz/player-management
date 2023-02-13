@@ -7,7 +7,7 @@ Application to manage player and his items.
 Start with cloning the repository
 
 ```
-git clone ...
+git clone https://github.com/Vrangz/player-manager.git
 ```
 
 You can use already prepared scripts in /script directory. To run the application call
