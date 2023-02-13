@@ -17,6 +17,7 @@ import (
 //		Responses:
 //		  200: LogsResponse
 //		  400: CommonError
+//	      401: CommonError
 func (ctrl *Controller) GetLogs(c *gin.Context) {
 	logs, err := ctrl.logRepository.GetLogs(c)
 	if err != nil {

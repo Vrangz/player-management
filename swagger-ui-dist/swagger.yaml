@@ -96,6 +96,10 @@ paths:
                     description: CommonError
                     schema:
                         $ref: '#/definitions/CommonError'
+                "401":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
             security:
                 - basic: []
             summary: Gets logs.
@@ -137,6 +141,10 @@ paths:
                 "204":
                     $ref: '#/responses/NoContentResponse'
                 "400":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
+                "401":
                     description: CommonError
                     schema:
                         $ref: '#/definitions/CommonError'
@@ -199,6 +207,10 @@ paths:
                     description: CommonError
                     schema:
                         $ref: '#/definitions/CommonError'
+                "401":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
             security:
                 - basic: []
             summary: Deletes defined item from the player.
@@ -232,6 +244,10 @@ paths:
                 "204":
                     $ref: '#/responses/NoContentResponse'
                 "400":
+                    description: CommonError
+                    schema:
+                        $ref: '#/definitions/CommonError'
+                "401":
                     description: CommonError
                     schema:
                         $ref: '#/definitions/CommonError'

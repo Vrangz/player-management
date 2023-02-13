@@ -56,6 +56,7 @@ func (ctrl *Controller) ListItems(c *gin.Context) {
 //		Responses:
 //		  204: NoContentResponse
 //	      400: CommonError
+//	      401: CommonError
 func (ctrl *Controller) AddItem(c *gin.Context) {
 	var (
 		username = c.Param("username")
@@ -87,6 +88,7 @@ func (ctrl *Controller) AddItem(c *gin.Context) {
 //		Responses:
 //		  204: NoContentResponse
 //	      400: CommonError
+//	      401: CommonError
 func (ctrl *Controller) DeleteItem(c *gin.Context) {
 	var (
 		username = c.Param("username")
@@ -118,6 +120,7 @@ func (ctrl *Controller) DeleteItem(c *gin.Context) {
 //		Responses:
 //		  204: NoContentResponse
 //	      400: CommonError
+//	      401: CommonError
 func (ctrl *Controller) Build(c *gin.Context) {
 	var username = c.Param("username")
 
