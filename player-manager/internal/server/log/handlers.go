@@ -11,9 +11,12 @@ import (
 //
 // Gets logs.
 //
+//	    Security:
+//	      token:
+//
 //		Responses:
 //		  200: LogsResponse
-//	      400: CommonError
+//		  400: CommonError
 func (ctrl *Controller) GetLogs(c *gin.Context) {
 	logs, err := ctrl.logRepository.GetLogs(c)
 	if err != nil {
