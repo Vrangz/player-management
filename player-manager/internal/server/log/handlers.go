@@ -12,7 +12,7 @@ import (
 // Gets logs.
 //
 //	    Security:
-//	      token:
+//	      basic:
 //
 //		Responses:
 //		  200: LogsResponse

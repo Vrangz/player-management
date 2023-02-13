@@ -50,6 +50,9 @@ func (ctrl *Controller) ListItems(c *gin.Context) {
 //
 // Adds defined item to the player.
 //
+//	    Security:
+//	      basic:
+//
 //		Responses:
 //		  204: NoContentResponse
 //	      400: CommonError
@@ -78,6 +81,9 @@ func (ctrl *Controller) AddItem(c *gin.Context) {
 //
 // Deletes defined item from the player.
 //
+//	    Security:
+//	      basic:
+//
 //		Responses:
 //		  204: NoContentResponse
 //	      400: CommonError
@@ -105,6 +111,9 @@ func (ctrl *Controller) DeleteItem(c *gin.Context) {
 // swagger:route POST /players/{username}/action/build player build
 //
 // If the player has enough of resources, he can perform build action.
+//
+//	    Security:
+//	      basic:
 //
 //		Responses:
 //		  204: NoContentResponse
