@@ -1,11 +1,19 @@
-//	Player manager Api:
-//	  version: 1.0.0
-//	  title: Player Manager API
-//	Schemes: http
-//	Host: localhost:8080
-//	BasePath: /api/v1
-//	Produces:
-//	  - application/json
+// Player manager Api:
+//   version: 1.0.0
+//   title: Player Manager API
+//
+// Schemes: http
+// Host: localhost:8080
+// BasePath: /api/v1
+// Produces:
+//   - application/json
+//
+// Security:
+//   - token:
+//
+// SecurityDefinitions:
+//  token:
+//    type: basic
 //
 // swagger:meta
 package server
