@@ -96,6 +96,8 @@ paths:
                     description: CommonError
                     schema:
                         $ref: '#/definitions/CommonError'
+            security:
+                - basic: []
             summary: Gets logs.
             tags:
                 - logs
@@ -138,6 +140,8 @@ paths:
                     description: CommonError
                     schema:
                         $ref: '#/definitions/CommonError'
+            security:
+                - basic: []
             summary: If the player has enough of resources, he can perform build action.
             tags:
                 - player
@@ -195,6 +199,8 @@ paths:
                     description: CommonError
                     schema:
                         $ref: '#/definitions/CommonError'
+            security:
+                - basic: []
             summary: Deletes defined item from the player.
             tags:
                 - player
@@ -229,6 +235,8 @@ paths:
                     description: CommonError
                     schema:
                         $ref: '#/definitions/CommonError'
+            security:
+                - basic: []
             summary: Adds defined item to the player.
             tags:
                 - player
@@ -239,4 +247,7 @@ responses:
         description: ""
 schemes:
     - http
+securityDefinitions:
+    basic:
+        type: basic
 swagger: "2.0"
