@@ -10,7 +10,7 @@ Start with cloning the repository
 git clone https://github.com/Vrangz/player-manager.git
 ```
 
-You can use already prepared scripts in /script directory. To run the application call
+You can use already prepared scripts in `script` directory. To run the application call
 
 ```
 ./scripts/run.sh
